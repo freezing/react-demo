@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
+import { withRouter } from "react-router";
 import { Header } from 'semantic-ui-react'
+
 import histogramsJson from '../assets/histograms.json';
 import histogram1 from '../assets/histograms/1.json';
 import histogram2 from '../assets/histograms/2.json';
@@ -18,13 +20,33 @@ class Api {
     if (histogramId === null) {
       return null;
     }
-    return HISTOGRAMS[histogramId];
+    if (HISTOGRAMS.hasOwnProperty(histogramId)) {
+      return HISTOGRAMS[histogramId];
+    }
+    return null;
   }
 }
 
-export default class Dashboard extends Component {
-  state = {selectedHistogramId: null}
+function getParamAsIntOrNull(params, name) {
+  if (!params.hasOwnProperty('histogramId')) {
+    return null;
+  }
+  const value = parseInt(params.histogramId, 10);
+  if (isNaN(value)) {
+    return null;
+  }
+  return value;
+}
+
+class DashboardPage extends Component {
   histograms = histogramsJson
+
+  constructor(props) {
+    super(props)
+    const {match: {params}} = props;
+    const histogramId = getParamAsIntOrNull(params, 'histogramId');
+    this.state = {selectedHistogramId: histogramId};
+  }
 
   render() {
     const histogramId = this.state.selectedHistogramId;
@@ -37,14 +59,18 @@ export default class Dashboard extends Component {
         <HistogramSelector 
         	histograms={this.histograms}
         	selectedHistogramId={histogramId}
-          itemOnClick={(histogramId) => this.itemOnClick(histogramId)}
+          itemOnClick={(histogramId) => this.itemOnClick(this.props.history, histogramId)}
         />
         {latencyHistogram}
       </div>
     );
   }
 
-  itemOnClick(histogramId) {
+  itemOnClick(history, histogramId) {
+    history.push('/dashboard/' + histogramId);
     this.setState({selectedHistogramId: histogramId});
   }
 }
+
+const DashboardPageWithRouter = withRouter(DashboardPage);
+export default DashboardPageWithRouter;

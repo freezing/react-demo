@@ -8,6 +8,7 @@ const AppPages = () => (
 	<Switch>
 		<Route exact path="/" component={DashboardPage} />
 		<Route exact path="/dashboard" component={DashboardPage} />
+		<Route exact path="/dashboard/:histogramId" component={DashboardPage} />
 		<Route component={NotFoundPage}/>
 	</Switch>
 );

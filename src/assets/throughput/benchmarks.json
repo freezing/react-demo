@@ -1,0 +1,10 @@
+[
+	{
+		"modelId": 1,
+		"description": "Order Book micro-benchmark via Aeron Archiver",
+	},
+	{
+		"modelId": 2,
+		"description": "Order Book micro-benchmark via Aeron (no archiver)",
+	}
+]

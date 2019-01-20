@@ -3,10 +3,6 @@ import { withRouter } from "react-router";
 import { Header } from 'semantic-ui-react'
 
 import Api from '../Api/Api';
-// import histogramsJson from '../assets/histograms.json';
-// import histogram1 from '../assets/histograms/1.json';
-// import histogram2 from '../assets/histograms/2.json';
-// import histogram3 from '../assets/histograms/3.json';
 import HistogramSelector from '../Components/HistogramSelector';
 import LatencyHistogram from '../Components/LatencyHistogram';
 

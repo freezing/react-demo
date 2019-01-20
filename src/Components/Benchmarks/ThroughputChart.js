@@ -16,12 +16,13 @@ function toLineData(benchmark) {
 
 class ThroughputChart extends Component {
 	render() {
-		const benchmark = this.props.benchmark;
-		const data = [toLineData(benchmark)];
+		const benchmarks = this.props.benchmarks;
+		const data = benchmarks.map(toLineData);
+		const title = this.extractTitle(benchmarks);
 		const layout = {
 			width: kWidth, 
 			height: kHeight, 
-			title: "Throughput",
+			title: title,
 			showLegend: true,
 			yaxis: {
 				rangemode: 'tozero',
@@ -29,6 +30,16 @@ class ThroughputChart extends Component {
 		    },
 		};
 		return <Line data={data} layout={layout} />
+	}
+
+	extractTitle(benchmarks) {
+		if (benchmarks.length == 0) {
+			return "";
+		} else if (benchmarks.length == 1) {
+			return benchmarks[0].description;
+		} else {
+			return "Throughput";
+		}
 	}
 }
 

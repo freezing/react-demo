@@ -1,17 +1,20 @@
-[
-	{
+{
+	"1": {
 		"id": 1,
-		"commit": "abcdef",
-		"timestamp": 1516457149
+		"commit": "c4de456034bf5aa472dd9976ac7c8afe1ef6a00e",
+		"timestamp": 1516457149,
+		"name": "Aeron Archiver"
 	},
-	{
+	"2": {
 		"id": 2,
-		"commit": "41gnwuj13",
-		"timestamp": 1547992673
+		"commit": "f818d3ef60a4a887434ae8342ddb53067ced2152",
+		"timestamp": 1547992673,
+		"name": "Aeron Without Archiver"
 	},
-	{
+	"3": {
 		"id": 3,
-		"commit": "ahgal12",
-		"timestamp": 1547993149
+		"commit": "52c1f6432275dfac19ab45e28ed6cd7564604945",
+		"timestamp": 1547993149,
+		"name": "Dummy data"
 	}
-]
+}

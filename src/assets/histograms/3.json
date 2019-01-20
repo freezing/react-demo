@@ -1,0 +1,99 @@
+{
+  "buckets": [
+    {
+      "percentile": 0,
+      "latencyNs": 1033,
+      "totalCounts": 78
+    },
+    {
+      "percentile": 50,
+      "latencyNs": 2327,
+      "totalCounts": 12649101
+    },
+    {
+      "percentile": 75,
+      "latencyNs": 3583,
+      "totalCounts": 8292535
+    },
+    {
+      "percentile": 87.5,
+      "latencyNs": 4039,
+      "totalCounts": 13422443
+    },
+    {
+      "percentile": 93.75,
+      "latencyNs": 4090,
+      "totalCounts": 41296693
+    },
+    {
+      "percentile": 96.875,
+      "latencyNs": 4095,
+      "totalCounts": 42239138
+    },
+    {
+      "percentile": 98.4375,
+      "latencyNs": 4351,
+      "totalCounts": 42622530
+    },
+    {
+      "percentile": 99.2188,
+      "latencyNs": 4863,
+      "totalCounts": 42940101
+    },
+    {
+      "percentile": 99.60940000000001,
+      "latencyNs": 6143,
+      "totalCounts": 43079790
+    },
+    {
+      "percentile": 99.8047,
+      "latencyNs": 10751,
+      "totalCounts": 43158459
+    },
+    {
+      "percentile": 99.9023,
+      "latencyNs": 19455,
+      "totalCounts": 43207233
+    },
+    {
+      "percentile": 99.9512,
+      "latencyNs": 9437183,
+      "totalCounts": 43221862
+    },
+    {
+      "percentile": 99.9756,
+      "latencyNs": 39845887,
+      "totalCounts": 43232466
+    },
+    {
+      "percentile": 99.98780000000001,
+      "latencyNs": 60817407,
+      "totalCounts": 43237626
+    },
+    {
+      "percentile": 99.9939,
+      "latencyNs": 71303167,
+      "totalCounts": 43240211
+    },
+    {
+      "percentile": 99.9969,
+      "latencyNs": 79691775,
+      "totalCounts": 43242271
+    },
+    {
+      "percentile": 99.9985,
+      "latencyNs": 79691775,
+      "totalCounts": 43242271
+    },
+    {
+      "percentile": 99.9992,
+      "latencyNs": 83886079,
+      "totalCounts": 43242623
+    },
+    {
+      "percentile": 100,
+      "latencyNs": 83886079,
+      "totalCounts": 43242623
+    }
+  ]
+}

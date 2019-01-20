@@ -1,0 +1,144 @@
+{
+  "buckets": [
+    {
+      "percentile": 0,
+      "latency": 2815,
+      "totalCounts": 6
+    },
+    {
+      "percentile": 0.5,
+      "latency": 7679,
+      "totalCounts": 23057476
+    },
+    {
+      "percentile": 0.75,
+      "latency": 8703,
+      "totalCounts": 33899142
+    },
+    {
+      "percentile": 0.875,
+      "latency": 9215,
+      "totalCounts": 37978683
+    },
+    {
+      "percentile": 0.9375,
+      "latency": 9727,
+      "totalCounts": 40784420
+    },
+    {
+      "percentile": 0.96875,
+      "latency": 10239,
+      "totalCounts": 42301397
+    },
+    {
+      "percentile": 0.984375,
+      "latency": 10751,
+      "totalCounts": 42897194
+    },
+    {
+      "percentile": 0.992188,
+      "latency": 11263,
+      "totalCounts": 42995509
+    },
+    {
+      "percentile": 0.996094,
+      "latency": 12799,
+      "totalCounts": 43090039
+    },
+    {
+      "percentile": 0.998047,
+      "latency": 16383,
+      "totalCounts": 43160588
+    },
+    {
+      "percentile": 0.999023,
+      "latency": 20479,
+      "totalCounts": 43203661
+    },
+    {
+      "percentile": 0.999512,
+      "latency": 23551,
+      "totalCounts": 43223690
+    },
+    {
+      "percentile": 0.999756,
+      "latency": 25599,
+      "totalCounts": 43237373
+    },
+    {
+      "percentile": 0.999878,
+      "latency": 25599,
+      "totalCounts": 43237373
+    },
+    {
+      "percentile": 0.999939,
+      "latency": 27647,
+      "totalCounts": 43240236
+    },
+    {
+      "percentile": 0.999969,
+      "latency": 34815,
+      "totalCounts": 43241531
+    },
+    {
+      "percentile": 0.999985,
+      "latency": 45055,
+      "totalCounts": 43242012
+    },
+    {
+      "percentile": 0.999992,
+      "latency": 61439,
+      "totalCounts": 43242295
+    },
+    {
+      "percentile": 0.999996,
+      "latency": 90111,
+      "totalCounts": 43242459
+    },
+    {
+      "percentile": 0.999998,
+      "latency": 110591,
+      "totalCounts": 43242549
+    },
+    {
+      "percentile": 0.999999,
+      "latency": 139263,
+      "totalCounts": 43242591
+    },
+    {
+      "percentile": 1,
+      "latency": 147455,
+      "totalCounts": 43242604
+    },
+    {
+      "percentile": 1,
+      "latency": 155647,
+      "totalCounts": 43242616
+    },
+    {
+      "percentile": 1,
+      "latency": 163839,
+      "totalCounts": 43242620
+    },
+    {
+      "percentile": 1,
+      "latency": 172031,
+      "totalCounts": 43242622
+    },
+    {
+      "percentile": 1,
+      "latency": 172031,
+      "totalCounts": 43242622
+    },
+    {
+      "percentile": 1,
+      "latency": 180223,
+      "totalCounts": 43242623
+    },
+    {
+      "percentile": 1,
+      "latency": 180223,
+      "totalCounts": 43242623
+    }
+  ]
+}

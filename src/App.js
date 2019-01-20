@@ -3,8 +3,8 @@ import { Segment, Sidebar } from 'semantic-ui-react'
 import { BrowserRouter as Router } from "react-router-dom";
 
 import 'semantic-ui-css/semantic.min.css';
-import Navigation from './Navigation';
-import AppPages from './AppPages';
+import Navigation from './Components/Navigation';
+import { AppPages } from './Pages';
 
 export default class App extends Component {
   render() {

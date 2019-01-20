@@ -1,12 +1,13 @@
 import React, { Component } from 'react';
-import Dashboard from './Dashboard';
 import {Route, Switch} from "react-router-dom";
+
+import DashboardPage from './DashboardPage';
 import NotFoundPage from './NotFoundPage';
 
 const AppPages = () => (
 	<Switch>
-		<Route exact path="/" component={Dashboard} />
-		<Route exact path="/dashboard" component={Dashboard} />
+		<Route exact path="/" component={DashboardPage} />
+		<Route exact path="/dashboard" component={DashboardPage} />
 		<Route component={NotFoundPage}/>
 	</Switch>
 );

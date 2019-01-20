@@ -19,16 +19,8 @@ export default class Navigation extends Component {
             width='thin'
           >
             <Menu.Item as='a'>
-              <Icon name='home' />
-              Home
-            </Menu.Item>
-            <Menu.Item as='a'>
-              <Icon name='gamepad' />
-              Games
-            </Menu.Item>
-            <Menu.Item as='a'>
-              <Icon name='camera' />
-              Channels
+              <Icon name='dashboard' />
+              Dashboard
             </Menu.Item>
           </Sidebar>
     );

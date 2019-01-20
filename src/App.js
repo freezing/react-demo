@@ -1,28 +1,28 @@
-import React, { Component } from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { Component } from 'react'
+import { Segment, Sidebar } from 'semantic-ui-react'
 
-class App extends Component {
+import 'semantic-ui-css/semantic.min.css';
+import Navigation from './Navigation';
+import Content from './Content';
+
+export default class App extends Component {
+  state = { visible: true }
+
   render() {
+    const { visible } = this.state;
+
     return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
+      <div style={{minHeight: '100vh'}}>
+        <Sidebar.Pushable as={Segment} style={{minHeight: '100vh'}}>
+          <Navigation />
+
+          <Sidebar.Pusher>
+            <Segment basic>
+              <Content />
+            </Segment>
+          </Sidebar.Pusher>
+        </Sidebar.Pushable>
       </div>
-    );
+    )
   }
 }
-
-export default App;

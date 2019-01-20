@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Header, Image } from 'semantic-ui-react'
+import { Header } from 'semantic-ui-react'
 import histogramsJson from './assets/histograms.json';
 import histogram1 from './assets/histograms/1.json';
 import histogram2 from './assets/histograms/2.json';

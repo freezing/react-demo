@@ -6,11 +6,7 @@ import Navigation from './Navigation';
 import Content from './Content';
 
 export default class App extends Component {
-  state = { visible: true }
-
   render() {
-    const { visible } = this.state;
-
     return (
       <div style={{minHeight: '100vh'}}>
         <Sidebar.Pushable as={Segment} style={{minHeight: '100vh'}}>

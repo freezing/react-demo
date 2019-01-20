@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Icon, List, Content, Header, Ribbon, Label } from 'semantic-ui-react'
+import { Icon, List } from 'semantic-ui-react'
 
 class SelectorItem extends Component {
 
@@ -26,6 +26,7 @@ export default class HistogramSelector extends Component {
       const histogram = this.props.histograms[histogramId];
       return (
         <SelectorItem 
+          key={histogram.id}
           histogram={histogram} 
           selected={selectedHistogramId === histogram.id}
           onClick={(id) => this.props.itemOnClick(id)}

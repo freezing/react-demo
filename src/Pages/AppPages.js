@@ -11,6 +11,7 @@ const AppPages = () => (
 		<Route exact path="/dashboard" component={DashboardPage} />
 		<Route exact path="/dashboard/:histogramId" component={DashboardPage} />
 		<Route exact path="/throughput" component={ThroughputPage} />
+		<Route exact path="/throughput/:selectedBenchmarkIds" component={ThroughputPage} />
 		<Route component={NotFoundPage}/>
 	</Switch>
 );

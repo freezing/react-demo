@@ -26,16 +26,20 @@ class ThroughputChart extends Component {
 			showLegend: true,
 			yaxis: {
 				rangemode: 'tozero',
-		    	autorange: true
+		    	autorange: true,
+		    	title: "ops / second",
 		    },
+		    xaxis: {
+		    	title: 'Timestamp (epoch)',
+		    }
 		};
 		return <Line data={data} layout={layout} />
 	}
 
 	extractTitle(benchmarks) {
-		if (benchmarks.length == 0) {
+		if (benchmarks.length === 0) {
 			return "";
-		} else if (benchmarks.length == 1) {
+		} else if (benchmarks.length === 1) {
 			return benchmarks[0].description;
 		} else {
 			return "Throughput";

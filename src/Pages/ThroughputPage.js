@@ -6,8 +6,21 @@ import Api from '../Api/Api';
 import ThroughputChart from '../Components/Benchmarks/ThroughputChart';
 import BenchmarkSelector from '../Components/Benchmarks/BenchmarkSelector';
 
+function getParamAsIntListOrEmpty(params, name) {
+  if (!params.hasOwnProperty(name)) {
+    return [];
+  }
+  const rawValues = params[name].split(",");
+  return rawValues.map(x => parseInt(x, 10)).filter(v => !isNaN(v));
+}
+
 class ThroughputPage extends Component {
-	state = {benchmarks: {}, selectedBenchmarkIds: [], availableBenchmarks: null}
+	constructor(props) {
+		super(props)
+		const {match: {params}} = props;
+		const selectedBenchmarkIds = getParamAsIntListOrEmpty(params, 'selectedBenchmarkIds');
+		this.state = {benchmarks: {}, selectedBenchmarkIds: selectedBenchmarkIds, availableBenchmarks: null}
+	}
 
 	componentDidMount() {
 		Api.getBenchmarks()
@@ -34,7 +47,7 @@ class ThroughputPage extends Component {
       			<BenchmarkSelector 
       				benchmarks={this.state.availableBenchmarks} 
       				selected={this.state.selectedBenchmarkIds} 
-      				benchmarkOnClick={benchmarkId => this.benchmarkOnClick(benchmarkId)}
+      				benchmarkOnClick={benchmarkId => this.benchmarkOnClick(this.props.history, benchmarkId)}
       			/>
 			</div>
 		);
@@ -48,18 +61,22 @@ class ThroughputPage extends Component {
 		}
 	}
 
-	benchmarkOnClick(benchmarkId) {
+	benchmarkOnClick(history, benchmarkId) {
+		let newSelectedBenchmarkIds;
 		if (this.state.selectedBenchmarkIds.includes(benchmarkId)) {
 			let newBenchmarks = this.state.benchmarks;
 			delete newBenchmarks[benchmarkId];
+			newSelectedBenchmarkIds = this.state.selectedBenchmarkIds.filter(value => value !== benchmarkId);
 			this.setState({
-				selectedBenchmarkIds: this.state.selectedBenchmarkIds.filter(value => value !== benchmarkId),
+				selectedBenchmarkIds: newSelectedBenchmarkIds,
 				benchmarks: newBenchmarks,
 			});
 		} else {
-			this.setState({selectedBenchmarkIds: this.state.selectedBenchmarkIds.concat(benchmarkId)});
+			newSelectedBenchmarkIds = this.state.selectedBenchmarkIds.concat(benchmarkId);
+			this.setState({selectedBenchmarkIds: newSelectedBenchmarkIds});
 			this.fetchBenchmark(benchmarkId);
 		}
+		history.push('/throughput/' + newSelectedBenchmarkIds);
 	}
 
 	fetchBenchmark(benchmarkId) {

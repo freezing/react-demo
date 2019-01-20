@@ -9,7 +9,6 @@ export default class Navigation extends Component {
 
     return (
           <Sidebar
-            styleName="min-height: 100vh;"
             as={Menu}
             animation='push'
             icon='labeled'

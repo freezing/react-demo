@@ -22,7 +22,7 @@ class Api {
   }
 }
 
-export default class Content extends Component {
+export default class Dashboard extends Component {
   state = {selectedHistogramId: null}
   histograms = histogramsJson
 

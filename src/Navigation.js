@@ -1,4 +1,5 @@
-import React, { Component } from 'react'
+import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 import { Icon, Menu, Sidebar } from 'semantic-ui-react'
 
 export default class Navigation extends Component {
@@ -19,8 +20,10 @@ export default class Navigation extends Component {
             width='thin'
           >
             <Menu.Item as='a'>
-              <Icon name='dashboard' />
-              Dashboard
+              <Link to='/dashboard'>
+                <Icon name='dashboard' />
+                Dashboard
+              </Link>
             </Menu.Item>
           </Sidebar>
     );

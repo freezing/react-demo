@@ -2,7 +2,6 @@ import React, { Component } from 'react'
 import { Icon, List } from 'semantic-ui-react'
 
 class SelectorItem extends Component {
-
   render() {
     const histogram = this.props.histogram;
     const color = this.props.selected ? "green" : "grey";

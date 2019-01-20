@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 
 const NotFoundPage = () => (
 	<p>404 - Page not found</p>

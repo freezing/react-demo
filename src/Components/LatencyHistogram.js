@@ -1,5 +1,9 @@
 import React, { Component } from 'react';
+import { Loader, Dimmer, Segment } from 'semantic-ui-react'
 import Bar from 'react-plotly.js';
+
+const kHeight = 300;
+const kWidth = 1000;
 
 function nanosToLabel(nanos) {
 	if (nanos > 1000000) {
@@ -25,7 +29,27 @@ function toBarData(histogram) {
 export default class LatencyHistogram extends Component {
 	render() {
 		const histogram = this.props.histogram;
+		const targetHistogramId = this.props.targetHistogramId;
+
+		// Do not render this component if histogram is not set and it not going to be set.
+		if (!histogram && !targetHistogramId) {
+			return null;
+		}
+
+		// If target histogram is set, but it is not loaded yet, show loading.
+		// Also, if histogram is set but it is not the same as the targetted histogram, show loading.
+		if (!histogram || histogram.id !== targetHistogramId) {
+			return(
+				<Segment style={{height: kHeight}}>
+					<Dimmer active inverted>
+						<Loader content="Loading latency histogram" />
+					</Dimmer>
+				</Segment>
+			);
+		}
+
+		// Finally, if targetted histogram and the one that's set are the same, render it.
 		const data = [toBarData(histogram)];
-		return <Bar data={data} layout={ {width: 1000, height: 300, title: histogram.name} } />
+		return <Bar data={data} layout={ {width: kWidth, height: kHeight, title: histogram.name} } />
 	}
 }

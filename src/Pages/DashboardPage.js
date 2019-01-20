@@ -2,30 +2,13 @@ import React, { Component } from 'react';
 import { withRouter } from "react-router";
 import { Header } from 'semantic-ui-react'
 
-import histogramsJson from '../assets/histograms.json';
-import histogram1 from '../assets/histograms/1.json';
-import histogram2 from '../assets/histograms/2.json';
-import histogram3 from '../assets/histograms/3.json';
+import Api from '../Api/Api';
+// import histogramsJson from '../assets/histograms.json';
+// import histogram1 from '../assets/histograms/1.json';
+// import histogram2 from '../assets/histograms/2.json';
+// import histogram3 from '../assets/histograms/3.json';
 import HistogramSelector from '../Components/HistogramSelector';
 import LatencyHistogram from '../Components/LatencyHistogram';
-
-const HISTOGRAMS = {
-  "1": histogram1,
-  "2": histogram2,
-  "3": histogram3
-};
-
-class Api {
-  static getFullHistogram(histogramId) {
-    if (histogramId === null) {
-      return null;
-    }
-    if (HISTOGRAMS.hasOwnProperty(histogramId)) {
-      return HISTOGRAMS[histogramId];
-    }
-    return null;
-  }
-}
 
 function getParamAsIntOrNull(params, name) {
   if (!params.hasOwnProperty('histogramId')) {
@@ -39,36 +22,54 @@ function getParamAsIntOrNull(params, name) {
 }
 
 class DashboardPage extends Component {
-  histograms = histogramsJson
-
   constructor(props) {
     super(props)
     const {match: {params}} = props;
-    const histogramId = getParamAsIntOrNull(params, 'histogramId');
-    this.state = {selectedHistogramId: histogramId};
+    const targetHistogramId = getParamAsIntOrNull(params, 'histogramId');
+    this.state = {displayedHistogram: null, histograms: null, targetHistogramId: targetHistogramId};
   }
 
   render() {
-    const histogramId = this.state.selectedHistogramId;
-    const histogram = Api.getFullHistogram(histogramId);
-    const latencyHistogram = histogram === null ? null : <LatencyHistogram histogram={histogram} />;
+    const targetHistogramId = this.state.targetHistogramId;
+    const displayedHistogram = this.state.displayedHistogram;
+    const histograms = this.state.histograms;
 
     return (
       <div>
       	<Header as='h3'>Dashboard</Header>
         <HistogramSelector 
-        	histograms={this.histograms}
-        	selectedHistogramId={histogramId}
+          histograms={histograms}
+          targetHistogramId={targetHistogramId}
           itemOnClick={(histogramId) => this.itemOnClick(this.props.history, histogramId)}
         />
-        {latencyHistogram}
+        <LatencyHistogram histogram={displayedHistogram} targetHistogramId={targetHistogramId} />
       </div>
     );
   }
 
   itemOnClick(history, histogramId) {
     history.push('/dashboard/' + histogramId);
-    this.setState({selectedHistogramId: histogramId});
+    this.fetchAndSetHistogramIfNotNull(histogramId);
+  }
+
+  componentDidMount() {
+    this.fetchAndSetHistogramIfNotNull(this.state.targetHistogramId);
+    Api.getHistograms()
+      .then(json => this.setState({histograms: json}))
+      .catch(console.log);
+  }
+
+  fetchAndSetHistogramIfNotNull(histogramId) {
+    this.setState({targetHistogramId: histogramId});
+
+    if (histogramId === null) {
+      this.setState({displayedHistogram: null});
+      return;
+    }
+    
+    Api.getFullHistogram(histogramId)
+      .then(json => this.setState({displayedHistogram: json}))
+      .catch(console.log);
   }
 }
 

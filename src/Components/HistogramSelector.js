@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Icon, List } from 'semantic-ui-react'
+import { Icon, List, Loader, Dimmer, Segment } from 'semantic-ui-react'
 
 class SelectorItem extends Component {
   render() {
@@ -20,24 +20,34 @@ class SelectorItem extends Component {
 
 export default class HistogramSelector extends Component {
   render() {
-    const selectedHistogramId = this.props.selectedHistogramId;
+    if (this.props.histograms == null) {
+      return (
+        <Segment style={{minHeight: '100px'}}>
+          <Dimmer active inverted>
+            <Loader content="Loading available histograms" />
+          </Dimmer>
+        </Segment>
+      );
+    }
+
+    const targetHistogramId = this.props.targetHistogramId;
     const items = Object.keys(this.props.histograms).map(histogramId => {
-      const histogram = this.props.histograms[histogramId];
+    const histogram = this.props.histograms[histogramId];
       return (
         <SelectorItem 
           key={histogram.id}
           histogram={histogram} 
-          selected={selectedHistogramId === histogram.id}
+          selected={targetHistogramId === histogram.id}
           onClick={(id) => this.props.itemOnClick(id)}
         />
       );
     });
     return (
-      <div>
-      <List selection verticalAlign='middle'>
-        {items}
-      </List>
-      </div>
+      <Segment>
+        <List selection verticalAlign='middle'>
+          {items}
+        </List>
+      </Segment>
     );
   }
 }
